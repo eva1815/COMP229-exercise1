@@ -16,7 +16,8 @@ import mongoose from 'mongoose';
 import { MongoURI, Secret } from '../config/config.js';
 
 // Import Routes
-import indexRouter from './routes/index.route.server.js'
+import indexRouter from './routes/index.route.server.js';
+import movieRouter from './routes/movies.route.server.js';
 
 // Instantiate Express Application
 const app = express();
@@ -49,6 +50,7 @@ app.use(session({
 
 // Use Routes
 app.use('/', indexRouter);
+app.use('/', movieRouter);
 
 
 export default app;
