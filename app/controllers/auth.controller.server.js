@@ -1,36 +1,39 @@
 import express from 'express';
 
-//need passport
-
+// need passport 
 import passport from 'passport';
 
-//need to include the User Model for authentication
+// need to include the User Model for authentication
 import User from '../models/user.js';
 
-//Display functions
+// import DisplayName Utility method
+import { UserDisplayName } from '../utils/index.js';
+
+// Display Functions
 export function DisplayLoginPage(req, res, next){
     if(!req.user){
-        //User is not authenticated so render the login page
-        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage')});
+        return res.render('index', {title: 'Login', page: 'login', messages: req.flash('loginMessage'), displayName: UserDisplayName(req) });
     }
+
     return res.redirect('/movie-list');
 }
 
 export function DisplayRegisterPage(req, res, next){
     if(!req.user){
-        return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage')});
+        return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)});
+    }
 
+    return res.redirect('/movie-list');
 }
-}
-// Process functions
 
+// Processing Function
 export function ProcessLoginPage(req, res, next){
-    passport.authenticate('local', function(err, user, info){
+    passport.authenticate('local', function(err, user, info) {
         if(err){
             console.error(err);
             res.end(err);
-        }
-
+        }     
+        
         if(!user){
             req.flash('loginMessage', 'Authentication Error');
             return res.redirect('/login');
@@ -41,11 +44,12 @@ export function ProcessLoginPage(req, res, next){
                 console.error(err);
                 res.end(err);
             }
+
             return res.redirect('/');
-        });
 
+        })
+        
     })(req, res, next);
-
 }
 
 export function ProcessRegisterPage(req, res, next){
@@ -58,20 +62,21 @@ export function ProcessRegisterPage(req, res, next){
     User.register(newUser, req.body.password, function(err){
         if(err){
             if(err.name == "UserExistsError"){
-                console.error('Error: User Already Exists');
-                req.flash('registerMessage', 'User Already Exists');
-            }else{
-                console.error(err);
-                req.flash('registerMessage', 'Server Error');
+                console.error('ERROR: User Already Exists!');
+                req.flash('registerMessage', 'Registration Error')
+            } else {
+                console.error(err.name);
+                req.flash('registerMessage', 'Server Error')
             }
-
+            
             return res.redirect('/register');
         }
 
-        return passport.authenticate('local')(req, res, function(){
+        return passport.authenticate('local')(req, res, function()
+        {
             return res.redirect('/');
         });
-    })
+    });
 }
 
 export function ProcessLogoutPage(req, res, next){
@@ -79,9 +84,9 @@ export function ProcessLogoutPage(req, res, next){
         if(err){
             console.error(err);
             res.end(err);
-        };
+        }
 
-        console.log('user logged out successfully');
+        console.log("user logged out successfully");
     });
 
     res.redirect('/login');
