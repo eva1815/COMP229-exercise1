@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { DisplayMoviesList, DisplayMoviesAddPage, ProcessMoviesAddPage, DisplayMoviesEditPage,ProcessMoviesEditPage, ProcessMoviesDelete } from "../controllers/movies.controller.server.js";
+import { DisplayMoviesList, DisplayMoviesAddPage, ProcessMoviesAddPage, DisplayMoviesEditPage,ProcessMoviesEditPage, ProcessMoviesDelete } from "../controllers/business.controller.server.js";
 import { AuthGuard } from "../utils/index.js";
 
 const router = Router();

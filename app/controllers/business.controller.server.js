@@ -1,15 +1,15 @@
-import movieModel from '../models/movies.js';
+import businessModel from '../models/business.js';
 import { UserDisplayName } from '../utils/index.js';
 
 
-export function DisplayMoviesList(req, res, next){
-    movieModel.find(function(err, moviesCollection){
+export function DisplayBusinessList(req, res, next){
+    businessModel.find(function(err, businessCollection){
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.render('index', {title: 'Movie List', page: 'movies/list', movies: moviesCollection, displayName: UserDisplayName (req) });
+        res.render('index', {title: 'Business Contacts List', page: 'business/list', business: businessCollection, displayName: UserDisplayName (req) });
     })
 }
 
