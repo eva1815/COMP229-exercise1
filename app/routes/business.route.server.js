@@ -1,11 +1,11 @@
 import { Router } from "express";
 
-import { DisplayMoviesList, DisplayMoviesAddPage, ProcessMoviesAddPage, DisplayMoviesEditPage,ProcessMoviesEditPage, ProcessMoviesDelete } from "../controllers/business.controller.server.js";
+import { DisplayBusinessList, DisplayMoviesAddPage, ProcessMoviesAddPage, DisplayMoviesEditPage,ProcessMoviesEditPage, ProcessMoviesDelete } from "../controllers/business.controller.server.js";
 import { AuthGuard } from "../utils/index.js";
 
 const router = Router();
 
-router.get('/movie-list', DisplayMoviesList);
+router.get('/business-list', DisplayBusinessList);
 router.get('/movie-add', AuthGuard, DisplayMoviesAddPage);
 router.post('/movie-add', AuthGuard, ProcessMoviesAddPage);
 router.post('/movie-edit/:id', AuthGuard, ProcessMoviesEditPage);
