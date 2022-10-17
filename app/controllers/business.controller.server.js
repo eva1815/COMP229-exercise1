@@ -13,73 +13,70 @@ export function DisplayBusinessList(req, res, next){
     })
 }
 
-export function DisplayMoviesAddPage(req, res, next){
-    res.render('index', { title: 'Add Movie', page: 'movies/edit', movie: {}, displayName: UserDisplayName (req) });
+export function DisplayBusinessAddPage(req, res, next){
+    res.render('index', { title: 'Add Contact', page: 'business/edit', business: {}, displayName: UserDisplayName (req) });
 }
 
-export function ProcessMoviesAddPage(req, res, next){
-    let newMovie = movieModel({
+export function ProcessBusinessAddPage(req, res, next){
+    let newBusiness = businessModel({
         name: req.body.name,
-        year: req.body.year,
-        director: req.body.director,
-        genre: req.body.genre,
-        runtime: req.body.runtime
+        number: req.body.number,
+        address: req.body.address       
     });
 
-    movieModel.create(newMovie, (err, Movie) => {
+    businessModel.create(newBusiness, (err, Business) => {
         if(err){
             console.error(err);
             res.end(err);
         };
-        res.redirect('/movie-list');
+        res.redirect('/business-list');
     })
 }
 
-export function DisplayMoviesEditPage(req, res, next){
+export function DisplayBusinessEditPage(req, res, next){
     let id = req.params.id;
 
-    movieModel.findById(id, (err, movie) => {
+    businessModel.findById(id, (err, movie) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Movie', page: 'movies/edit', movie: movie, displayName: UserDisplayName (req) });
+        res.render('index', { title: 'Edit Contact', page: 'business/edit', business: business, displayName: UserDisplayName (req) });
     });
 
 }
-export function ProcessMoviesEditPage(req, res, next){
+export function ProcessBusinessEditPage(req, res, next){
 
     let id = req.params.id;
     
-    let newMovie = movieModel({
+    let newBusiness = businessModel({
         _id: req.body.id,
         name: req.body.name,
-        year: req.body.year,
-        director: req.body.director,
-        genre: req.body.genre,
-        runtime: req.body.runtime
+        number: req.body.number,
+        address: req.body.address
+        
     });
 
-    movieModel.updateOne({_id: id }, newMovie, (err, Movie) => {
+    businessModel.updateOne({_id: id }, newBusiness, (err, Business) => {
         if(err){
             console.error(err);
             res.end(err);
         };
 
-        res.redirect('/movie-list')
+        res.redirect('/business-list')
     } )
 }
 
-export function ProcessMoviesDelete(req, res, next){
+export function ProcessBusinessDelete(req, res, next){
     let id = req.params.id;
 
-    movieModel.remove({_id: id}, (err) => {
+    businessModel.remove({_id: id}, (err) => {
         if (err){
             console.error(err);
             res.end(err);
         }
 
-        res.redirect('/movie-list');
+        res.redirect('/business-list');
     })
 }

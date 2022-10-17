@@ -4,38 +4,38 @@
             <h1><%= title %></h1>
 
             <form class="form" method="POST">
-                <input type="hidden" name="id" value="<%= movie._id %>" >
+                <input type="hidden" name="id" value="<%= business._id %>" >
                 <div class="form-group">
-                    <label for="nameTextField">Movie Title</label>
+                    <label for="nameTextField">Your Name</label>
                     <input type="text" class="form-control"
                     id="nameTextField"
-                    placeholder="Enter the Movie Title"
+                    placeholder="Enter Your Name"
                     name="name" 
-                    value="<%= movie.name %>"
+                    value="<%= business.name %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="authorTextField">Year</label>
+                    <label for="authorTextField">Phone Number</label>
                     <input type="number" class="form-control"
                     id="authorTextField"
-                    placeholder="Enter the Release Year"
-                    name="year" 
-                    value="<%= movie.year %>"
+                    placeholder="Enter Your Phone Number"
+                    name="number" 
+                    value="<%= business.number %>"
                     required>
                 </div>
 
                 <div class="form-group">
-                    <label for="publishedTextField">Director</label>
+                    <label for="publishedTextField">Email Address</label>
                     <input type="text" class="form-control"
                     id="publishedTextField"
-                    placeholder="Enter the Director's Name"
-                    name="director" 
-                    value="<%= movie.director %>"
+                    placeholder="Enter Your Email Address"
+                    name="address" 
+                    value="<%= business.address %>"
                     required>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="descriptionTextArea">Genre</label>
                     <input type="text" class="form-control"
                     id="descriptionTextArea"
@@ -55,13 +55,13 @@
                     name="runtime" 
                     value="<%= movie.runtime %>"
                     required>
-                </div>
+                </div> -->
 
                 <button class="btn btn-primary" type="submit">
-                    <i class="fas fa-edit"></i> Submit</button>
+                    <i class="fas fa-edit"></i> Update</button>
                 
-                    <a href="/movie-list" class="btn btn-warning">
-                        <i class="fas fa-undo"></i> Cancel</a>
+                    <a href="/business-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Delete</a>
 
             </form>
         </div>

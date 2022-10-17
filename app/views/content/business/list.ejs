@@ -1,8 +1,8 @@
 <div class="container">
     <h1>Business Contacts List</h1>
     <% if(displayName) {%>
-    <a href="/movie-add" class="btn btn-primary" role="button">
-        <i class="fas fa-plus-circle"></i> Add a Movie</a>
+    <a href="/business-add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Contact</a>
         <% } %>
     <div class="row">
         <div class="col">
@@ -31,13 +31,13 @@
                             
                             <% if(displayName) {%>
                             <td class="text-center col-1">
-                                <a href="/movie-edit/<%= movies[count]._id %>"
+                                <a href="/business-edit/<%= business[count]._id %>"
                                     class="btn btn-primary btn-sm">
                                     <i class="fas fa-pencil-alt"></i> Update</a>
                             </td>
                             
                             <td class="text-center col-1">
-                                <a href="/movie-delete/<%= movies[count]._id %>"
+                                <a href="/business-delete/<%= business[count]._id %>"
                                     class="btn btn-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Delete</a>
                             </td>

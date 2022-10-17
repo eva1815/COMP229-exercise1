@@ -1,16 +1,16 @@
 import { Router } from "express";
 
-import { DisplayBusinessList, DisplayMoviesAddPage, ProcessMoviesAddPage, DisplayMoviesEditPage,ProcessMoviesEditPage, ProcessMoviesDelete } from "../controllers/business.controller.server.js";
+import { DisplayBusinessList, DisplayBusinessAddPage, ProcessBusinessAddPage, DisplayBusinessEditPage,ProcessBusinessEditPage, ProcessBusinessDelete } from "../controllers/business.controller.server.js";
 import { AuthGuard } from "../utils/index.js";
 
 const router = Router();
 
 router.get('/business-list', DisplayBusinessList);
-router.get('/movie-add', AuthGuard, DisplayMoviesAddPage);
-router.post('/movie-add', AuthGuard, ProcessMoviesAddPage);
-router.post('/movie-edit/:id', AuthGuard, ProcessMoviesEditPage);
-router.get('/movie-edit/:id', AuthGuard, DisplayMoviesEditPage);
-router.get('/movie-delete/:id', AuthGuard, ProcessMoviesDelete);
+router.get('/business-add', AuthGuard, DisplayBusinessAddPage);
+router.post('/business-add', AuthGuard, ProcessBusinessAddPage);
+router.post('/business-edit/:id', AuthGuard, ProcessBusinessEditPage);
+router.get('/business-edit/:id', AuthGuard, DisplayBusinessEditPage);
+router.get('/business-delete/:id', AuthGuard, ProcessBusinessDelete);
 
 
 
