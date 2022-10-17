@@ -36,7 +36,7 @@ export function ProcessBusinessAddPage(req, res, next){
 export function DisplayBusinessEditPage(req, res, next){
     let id = req.params.id;
 
-    businessModel.findById(id, (err, movie) => {
+    businessModel.findById(id, (err, business) => {
         if(err){
             console.error(err);
             res.end(err);
