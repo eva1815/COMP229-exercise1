@@ -1,3 +1,31 @@
-<div class="container">
-    <h1><%= title %></h1>
-</div>
+<h1> <%= title %> </h1>
+
+    <section class="s2">
+        <div class="main-container">
+            <h3 style="text-align: center;">Contact Me</h3>
+            <form id="contact-form" action="http://localhost:3000">
+                <label>First Name:</label>
+                <input class="input-field" type="text" name="fname">
+
+                <label>Last Name:</label>
+                <input class="input-field" type="text" name="lname">
+
+                <label>Contact Number:</label>
+                <input class="input-field" type="text" name="cnumber">
+
+                <label>Email:</label>
+                <input class="input-field" type="text" name="email">
+
+                <label>Message:</label>
+                <textarea class="input-field" type="text" name="message"></textarea>
+
+                <input id="submit-btn" type="submit" value="Send" >
+               
+
+            </form>
+            
+
+        </div>
+
+    </section>
+    
