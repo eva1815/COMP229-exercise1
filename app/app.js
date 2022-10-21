@@ -1,3 +1,7 @@
+// File Name: app.js
+//  Student Name: Eva Fan 
+//  StudentID: 301238820
+// Date: October 16, 2022  
 // Third-Party Modules
 import express from 'express';
 import cookieParser from 'cookie-parser';
